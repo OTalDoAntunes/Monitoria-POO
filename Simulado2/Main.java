@@ -21,7 +21,7 @@ public class Main{
 
             System.out.println("===Pagamento com cartão===");
             Pedido novoPedido = new Pedido(cliente, carrinho);
-            Pagamento cartao = new PagamentoCartao(6, 7000);
+            Pagamento cartao = new PagamentoCartao(6, 300);
             novoPedido.finalizar(cartao);
 
         } catch(EstoqueInsuficienteException EIE){
