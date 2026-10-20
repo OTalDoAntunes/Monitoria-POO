@@ -11,7 +11,7 @@ public class Assinatura extends Produto{
     @Override 
     public double calcularPrecoFinal(){
         if(messes >= 6)
-            return (getPrecoBase() * messes) * 0.10;
+            return getPrecoBase() - (getPrecoBase() * 0.10);
         else
             return getPrecoBase() * messes;
     }

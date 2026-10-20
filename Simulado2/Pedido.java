@@ -12,19 +12,25 @@ public class Pedido{
     public void finalizar(Pagamento pagamento){
         try{
             if(this.cliente instanceof ClienteVip){
-                double subtotal = pagamento.calcularValorFinal(carrinho.calculartotal() + carrinho.calcularFreteTotal(cliente.getCpf()));
+                double subtotal = carrinho.calculartotal() + carrinho.calcularFreteTotal(cliente.getCpf());
                 subtotal -= (carrinho.calculartotal() + carrinho.calcularFreteTotal(cliente.getCpf())) * 0.10;
-                pagamento.exibirComprovante(subtotal);
+
+                System.out.println(pagamento.exibirComprovante(subtotal));
+
                 cliente.adicionarPontos((int)(subtotal / 10));
             }else{
-                double subtotal = pagamento.calcularValorFinal(carrinho.calculartotal() + carrinho.calcularFreteTotal(cliente.getCpf()));
-                pagamento.exibirComprovante(subtotal);
+                double subtotal = carrinho.calculartotal() + carrinho.calcularFreteTotal(cliente.getCpf());
+                
+                System.out.println(pagamento.exibirComprovante(subtotal));
+
                 cliente.adicionarPontos((int)(subtotal / 10));
             }
         } catch(PagamentoRecusadoException e){
             System.out.println("Pagamento recusado!");
+
         } finally{
             System.out.println("Pedido encerrado.");
+        
         }
     }
 }

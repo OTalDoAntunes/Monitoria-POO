@@ -8,15 +8,19 @@ public class CarrinhoDeCompras{
 
     public void adicionar(Produto p){
         this.itens.add(p);
+
+        p.baixarEstoque(1);
     }
 
     public void adicionar(Produto p, int quantidade) throws EstoqueInsuficienteException{
         if(quantidade > p.getEstoque())
-            throw new EstoqueInsuficienteException(p.getNome(), quantidade);
+            throw new EstoqueInsuficienteException(p.getNome(), p.getEstoque());
         
         for(int i = 0; i < quantidade; i++){
             this.itens.add(p);
         }
+
+        p.baixarEstoque(quantidade);
     }
 
     public double calculartotal(){

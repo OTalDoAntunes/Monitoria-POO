@@ -6,6 +6,6 @@ public interface Pagamento{
     public String getDescricao();
 
     public default String exibirComprovante(double valor){
-        return "Pago via: " + getDescricao() + ": R$" + calcularValorFinal(valor);
+        return "Pago via " + getDescricao() + ": R$" + calcularValorFinal(valor);
     }
 }
